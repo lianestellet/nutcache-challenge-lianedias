@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace WebUI.Controllers
+namespace Nutcache.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

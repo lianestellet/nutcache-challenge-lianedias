@@ -1,6 +1,6 @@
 using System;
 
-namespace WebUI
+namespace Nutcache.API
 {
     public class WeatherForecast
     {
