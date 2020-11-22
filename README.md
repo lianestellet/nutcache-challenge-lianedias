@@ -9,3 +9,6 @@ https://github.com/tjmukurumbira/reactivities/tree/main/client-app
 
 .NET Core Clean Architecture
 https://github.com/jasontaylordev/CleanArchitecture/tree/master/src
+
+Data Seeding and Initiailzing
+https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/
