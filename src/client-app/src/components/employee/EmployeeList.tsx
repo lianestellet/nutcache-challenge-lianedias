@@ -1,7 +1,6 @@
-import React, { SyntheticEvent } from "react";
-import { Item, Button, Label, Segment } from "semantic-ui-react";
+import React from "react";
 import { IEmployee } from "../../interfaces/employee";
-import "./employee.css";
+import "./EmployeeList.css";
 
 let employees = [ 
    {
@@ -45,25 +44,28 @@ export const EmployeeList = () => {
 
   return (
    
-    <Segment clearing>
-    <Item.Group divided>   
+    <div className="container">
+    <div className="employee__grid">   
       {employees.map(employee => (           
-        <Item key={employee.id} className="employee--list-item">          
-          <Item.Content>
-            <Item.Header as='a'>{employee.name}</Item.Header>
-            <Item.Meta>{employee.startDate}</Item.Meta>
-            <Item.Description>
+        <div key={employee.id} className="employee__grid__item">          
+          <div>
+            <div>{employee.name}</div>
+            <div>{employee.startDate}</div>
+            <div>
               <div>{employee.email}</div>
               <div>{employee.gender}</div>
-            </Item.Description>
-            <Item.Extra>
-              <Button onClick={(e)=>selectEmployee(employee.id)} floated='right' content='View' color='blue'></Button>
-              <Label basic content={employee.name}/>               
-            </Item.Extra>
-          </Item.Content>
-        </Item>
+            </div>
+            <div>              
+              <label>{employee.name}
+                <input type="button" value="Edit"
+                  onClick={(e) => selectEmployee(employee.id)}
+                />
+              </label>   
+            </div>
+          </div>
+        </div>
       ))}
-    </Item.Group>
-  </Segment>   
+    </div>
+  </div>   
   );
 };
