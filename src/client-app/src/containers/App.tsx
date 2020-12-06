@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { EmployeeList } from "../components/employee/EmployeeList";
+import { EmployeeList } from "../components/employee/List";
 
 const App = () => {
 

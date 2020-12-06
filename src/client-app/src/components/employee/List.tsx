@@ -1,6 +1,6 @@
 import React from "react";
 import { IEmployee } from "../../interfaces/employee";
-import "./EmployeeList.css";
+import "./List.scss";
 
 let employees = [ 
    {
@@ -43,29 +43,32 @@ export const EmployeeList = () => {
   }
 
   return (
-   
-    <div className="container">
-    <div className="employee__grid">   
+      <div className="employees">
+        <h3>Employees</h3>
+        <div className="employees__header">  
+            <div>Name</div>
+            <div>StartDate</div>
+            <div>Email</div>
+            <div>Gender</div>
+            <div>Actions</div>
+        </div>
       {employees.map(employee => (           
-        <div key={employee.id} className="employee__grid__item">          
-          <div>
-            <div>{employee.name}</div>
-            <div>{employee.startDate}</div>
-            <div>
-              <div>{employee.email}</div>
-              <div>{employee.gender}</div>
-            </div>
-            <div>              
-              <label>{employee.name}
-                <input type="button" value="Edit"
+        <div key={employee.id} className="employee">
+            <div className="employee__prop">{employee.name}</div>
+            <div className="employee__prop">{employee.startDate}</div>
+            <div className="employee__prop">{employee.email}</div>
+            <div className="employee__prop">{employee.gender}</div>
+          <div className="employee__prop">
+            
+              <input className="employee__prop--button" type="button" value="Edit"
+                  onClick={(e) => selectEmployee(employee.id)}
+            />
+            <input className="employee__prop--button" type="button" value="Disable"
                   onClick={(e) => selectEmployee(employee.id)}
                 />
-              </label>   
             </div>
-          </div>
         </div>
       ))}
     </div>
-  </div>   
   );
 };
