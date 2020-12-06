@@ -12,34 +12,5 @@ namespace Nutcache.API.Data
 
         public DbSet<Employee> Employee { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Employee>().HasData(
-                new Employee
-                {
-                    Id = 1,
-                    Name = "Arnold Schwarzenegger",
-                    Email = "arnold@microsoft.com",
-                    BirthDate = new DateTime(1976, 2, 25),
-                    CPF = "09876543212",
-                    Gender = "Male",
-                    Team = "Frontend",
-                    StartDate = new DateTime(2020, 10, 10),
-                    IsActive = true
-                },
-                new Employee
-                {
-                    Id = 2,
-                    Name = "Lara Croft",
-                    Email = "larcro@google.com",
-                    BirthDate = new DateTime(1976, 2, 25),
-                    CPF = "73876453212",
-                    Gender = "Female",
-                    Team = "Frontend",
-                    StartDate = new DateTime(2020, 10, 10),
-                    IsActive = true
-                }
-            );
-        }
     }
 }

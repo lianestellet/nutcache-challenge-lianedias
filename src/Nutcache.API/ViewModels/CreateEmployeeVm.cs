@@ -1,14 +1,12 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Nutcache.API
+namespace Nutcache.API.ViewModels
 {
-    public class Employee
+    public class CreateEmployeeVm
     {
-        [Key]
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string Gender { get; set; }
