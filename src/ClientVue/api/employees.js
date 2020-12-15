@@ -1,6 +1,6 @@
 export default ($axios) => ({
     get() {
-        return $axios.$get('/employees');
+        return $axios.$get('/employees/');
     },
 
     create(employee) {

@@ -24,8 +24,7 @@ namespace Nutcache.API.Data
                     CPF = "09876543212",
                     Gender = "Male",
                     Team = "Frontend",
-                    StartDate = new DateTime(2020, 10, 10),
-                    IsActive = true
+                    StartDate = new DateTime(2020, 10, 10)
                 },
                 new Employee
                 {
@@ -36,8 +35,7 @@ namespace Nutcache.API.Data
                     CPF = "73876453212",
                     Gender = "Female",
                     Team = "Frontend",
-                    StartDate = new DateTime(2020, 10, 10),
-                    IsActive = true
+                    StartDate = new DateTime(2020, 10, 10)
                 }
             );
         }

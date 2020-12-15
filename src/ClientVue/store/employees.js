@@ -33,7 +33,8 @@ export const actions = {
     
     await this.app.$employeesRepository
       .get()
-      .then((employees) => {
+		.then((employees) => {
+			  debugger;
         commit('getList', employees)
 			})
 			.catch((ex) => {

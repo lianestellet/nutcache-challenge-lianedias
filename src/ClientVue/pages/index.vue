@@ -27,6 +27,14 @@ export default {
     ...mapGetters({ 
       'employees': 'employees/list'
     })
+  },
+  methods: {
+    ...mapActions({
+      'getEmployees': 'employees/get'
+    })
+  },
+  mounted () {
+    this.getEmployees();
   }
 }
 </script>
