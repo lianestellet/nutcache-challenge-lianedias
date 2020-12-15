@@ -1,13 +1,15 @@
 import React, { Fragment } from "react";
-import { EmployeeList } from "../components/employee/List";
+import { Row } from 'antd';
+import Employees from './Employees';
+import 'antd/dist/antd.css';
 
 const App = () => {
 
   return (
     <Fragment>      
-      <div style={{ marginTop: "7em" }}>
-        <EmployeeList />
-      </div>
+      <Row justify='center'>
+        <Employees />
+      </Row>
     </Fragment>
   );
 };
