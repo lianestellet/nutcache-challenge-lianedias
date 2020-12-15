@@ -1,6 +1,27 @@
 
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode
+=======
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,react
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+>>>>>>> a79d5495ee8b72b1467de58215f78cb68c77aabf
 
 ### VisualStudioCode ###
 .vscode/*
@@ -101,7 +122,10 @@ StyleCopReport.xml
 *.tmp
 *.tmp_proj
 *_wpftmp.csproj
+<<<<<<< HEAD
 *.log
+=======
+>>>>>>> a79d5495ee8b72b1467de58215f78cb68c77aabf
 *.vspscc
 *.vssscc
 .builds
@@ -368,4 +392,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,react
