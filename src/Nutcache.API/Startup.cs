@@ -1,11 +1,16 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using Nutcache.API.Data;
+using Nutcache.API.ViewModels.Validators;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Nutcache.API
 {
@@ -23,8 +28,17 @@ namespace Nutcache.API
         {
             services.AddDbContext<ApiContext>(
                 options => options.UseInMemoryDatabase(databaseName: "NutcacheDb"));
-            
-            services.AddControllers();
+
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                    .AllowAnyMethod()
+                                                                     .AllowAnyHeader()));
+
+            services.AddControllers().AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssemblyContaining<EmployeeVmValidator>();
+                fv.ImplicitlyValidateChildProperties = true;
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nutcache.API", Version = "v1" });
@@ -42,14 +56,17 @@ namespace Nutcache.API
             }
 
             app.UseHttpsRedirection();
-            
+
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
             });
         }
     }

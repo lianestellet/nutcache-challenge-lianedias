@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Nutcache.API.Data;
+using Nutcache.API.ViewModels;
 
 namespace Nutcache.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class EmployeeController : ControllerBase
+    [Route("api/[controller]")]
+    public class EmployeesController : ControllerBase
     {
         private readonly ApiContext _context;
 
-        public EmployeeController(ApiContext context)
+        public EmployeesController(ApiContext context)
         {
             _context = context;
         }
@@ -33,13 +34,15 @@ namespace Nutcache.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Employee employee)
+        public ActionResult Create(EmployeeVm employeeVm)
         {
             try
             {
+                var employee = employeeVm.ToModel();
                 _context.Employee.Add(employee);
                 _context.SaveChanges();
-                return Ok();
+
+                return Ok(employee);
             }
             catch (Exception ex)
             {
@@ -48,14 +51,15 @@ namespace Nutcache.API.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update(Employee employee)
+        public ActionResult Update(EmployeeVm employeeVm)
         {
             try
             {
-                var updatedEmployee = _context.Employee.Find(employee.Id);
-                updatedEmployee = employee;
+                var updatedEmployee = _context.Employee.Find(employeeVm.Id);
+                updatedEmployee = employeeVm.ToModel();
+                updatedEmployee.Id = employeeVm.Id; // TODO Adjust
                 _context.SaveChanges();
-                return Ok();
+                return Ok(updatedEmployee);
             }
             catch (Exception ex)
             {
@@ -63,8 +67,9 @@ namespace Nutcache.API.Controllers
             }
         }
 
-        [HttpDelete]
-        public ActionResult Delete(int employeeId)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? employeeId)
         {
             try
             {
