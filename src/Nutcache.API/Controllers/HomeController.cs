@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nutcache.API.Controllers
 {    
-    [Route("")]
+    [Route("xxx")]
     public class HomeController : Controller
     {
         [HttpGet]

@@ -29,6 +29,10 @@ namespace Nutcache.API
             services.AddDbContext<ApiContext>(
                 options => options.UseInMemoryDatabase(databaseName: "NutcacheDb"));
 
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                    .AllowAnyMethod()
+                                                                     .AllowAnyHeader()));
+
             services.AddControllers().AddFluentValidation(fv =>
             {
                 fv.RegisterValidatorsFromAssemblyContaining<EmployeeVmValidator>();
@@ -53,10 +57,9 @@ namespace Nutcache.API
 
             app.UseHttpsRedirection();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 

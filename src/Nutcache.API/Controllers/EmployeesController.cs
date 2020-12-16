@@ -10,7 +10,7 @@ using Nutcache.API.ViewModels;
 namespace Nutcache.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
     {
         private readonly ApiContext _context;
@@ -38,9 +38,11 @@ namespace Nutcache.API.Controllers
         {
             try
             {
-                _context.Employee.Add(employeeVm.ToModel());
+                var employee = employeeVm.ToModel();
+                _context.Employee.Add(employee);
                 _context.SaveChanges();
-                return Ok();
+
+                return Ok(employee);
             }
             catch (Exception ex)
             {
@@ -55,8 +57,9 @@ namespace Nutcache.API.Controllers
             {
                 var updatedEmployee = _context.Employee.Find(employeeVm.Id);
                 updatedEmployee = employeeVm.ToModel();
+                updatedEmployee.Id = employeeVm.Id; // TODO Adjust
                 _context.SaveChanges();
-                return Ok();
+                return Ok(updatedEmployee);
             }
             catch (Exception ex)
             {
@@ -64,8 +67,9 @@ namespace Nutcache.API.Controllers
             }
         }
 
-        [HttpDelete]
-        public ActionResult Delete(int employeeId)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? employeeId)
         {
             try
             {

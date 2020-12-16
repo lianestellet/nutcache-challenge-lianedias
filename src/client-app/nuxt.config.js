@@ -1,13 +1,7 @@
-export default {
-  // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
-  ssr: false,
-
-  // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
-
+export default {  
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'clientApp',
+    title: 'client-app',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -45,7 +39,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-      baseURL: 'http://localhost:5000/'
+      baseURL: 'https://localhost:5001/api/'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

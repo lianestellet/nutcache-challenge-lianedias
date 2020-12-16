@@ -1,4 +1,4 @@
-# clientApp
+# ClientVue
 
 ## Build Setup
 

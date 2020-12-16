@@ -17,7 +17,7 @@ namespace Nutcache.API
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<ApiContext>();
-                ApiContextSeed.SeedData(context);
+                // ApiContextSeed.SeedData(context);
             }
             
             host.Run();

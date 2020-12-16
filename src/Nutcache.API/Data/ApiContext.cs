@@ -38,6 +38,14 @@ namespace Nutcache.API.Data
                     StartDate = new DateTime(2020, 10, 10)
                 }
             );
+
+            builder.Entity<Employee>()
+                .Property(f => f.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<Employee>()
+            .HasKey(p => new { p.Id });
+            
         }
     }
 }

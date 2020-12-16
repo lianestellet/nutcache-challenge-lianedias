@@ -9,7 +9,7 @@ namespace Nutcache.API
         public Employee(){}        
 
         public Employee(string name, DateTime birthDate, string gender, 
-            string email, string cpf, DateTime startDate, string team, int? id = null)
+            string email, string cpf, DateTime startDate, string team)
         {
             this.Name = name;
             this.BirthDate = birthDate;
@@ -18,11 +18,10 @@ namespace Nutcache.API
             this.CPF = cpf;
             this.StartDate = startDate;
             this.Team = team;
-            this.Id = id;
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }

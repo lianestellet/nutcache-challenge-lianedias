@@ -19,7 +19,7 @@ namespace Nutcache.API.ViewModels
 
         public Employee ToModel()
         {
-            return new Employee(Name, BirthDate, Gender, Email, CPF, StartDate, Team, Id);
+            return new Employee(Name, BirthDate, Gender, Email, CPF, StartDate, Team);
         }
     }
 }

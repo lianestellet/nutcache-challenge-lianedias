@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export const state = () => ({
   list: []
 })
@@ -32,42 +34,39 @@ export const actions = {
   async get({ commit }) {
     
     await this.app.$employeesRepository
-      .get()
-		.then((employees) => {
-			  debugger;
-        commit('getList', employees)
-			})
-			.catch((ex) => {
-				this.showError(ex.message)
-    	})
+			.get()
+			.then((employees) => commit('getList', employees))
+			.catch(err => {
+        throw new Error(err)
+      })
   },
 
-  async add({ commit }, employee) {
+  async create({ commit }, employee) {
 		
 		await this.app.$employeesRepository
 			.create(employee)
-			.then(() => commit('createEmployee', employee))
-			.catch((ex) => {
-				this.showError(ex.message)
-    	})
+			.then((createdEmployee) => {
+				commit('create', createdEmployee)
+			})
+			.catch(this.showException)
 	},
 	
-	async add({ commit }, employee) {
+	async update({ commit }, employee) {
 		await this.app.$employeesRepository
 			.update(employee)
-			.then(() => commit('update', employee))
-			.catch((ex) => {
-				this.showError(ex.message)
-		})
+			.then((updatedEmployee) => {
+				commit('update', updatedEmployee)
+			})
+			.catch(this.showException)
 	},
 
   async delete({ commit }, employeeId) {
 		await this.app.$employeesRepository
 			.delete(employeeId)
 			.then(() => commit('delete', employeeId))
-			.catch((ex) => {
-				this.showError(ex.message)
-		})
+			.catch(err => {
+        throw new Error(err)
+      })
 	}
 }
 
