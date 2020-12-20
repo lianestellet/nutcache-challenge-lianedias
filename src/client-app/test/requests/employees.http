@@ -1,0 +1,21 @@
+@host=https://localhost:5001/api
+
+### GET EMPLOYEES
+GET {{host}}/employees HTTP/1.1
+Accept: application/json
+content-type: application/json
+
+###
+POST {{host}}/employees HTTP/1.1
+Accept: application/json
+content-type: application/json
+
+{
+    "Name": "Ned Stark",
+    "BirthDate": "",
+    "Gender": "Male",
+    "Email": "ned.stark@gmail.com",
+    "CPF": "12608475495",
+    "StartDate": "",
+    "Team": "Backend"
+}

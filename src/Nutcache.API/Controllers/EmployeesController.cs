@@ -67,7 +67,7 @@ namespace Nutcache.API.Controllers
             }
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int? employeeId)
         {

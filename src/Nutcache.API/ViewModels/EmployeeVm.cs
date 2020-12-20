@@ -14,7 +14,6 @@ namespace Nutcache.API.ViewModels
         public string Email { get; set; }
         public string CPF { get; set; }
         public DateTime StartDate { get; set; }
-        public bool IsActive { get; set; }
         public string Team { get; set; }
 
         public Employee ToModel()
