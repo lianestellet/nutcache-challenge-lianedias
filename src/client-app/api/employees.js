@@ -8,7 +8,7 @@ export default ($axios) => ({
     },
 
     update(employee) {
-        return $axios.$put('/employees/', employee)
+        return $axios.$put(`/employees/${employee.id}`, employee)
     },
 
     delete(employeeId) {

@@ -78,16 +78,19 @@ namespace Nutcache.API.Controllers
             }
         }
 
-        [HttpDelete, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int? employeeId)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
         {
             try
             {
-                var deletedEmployee = _context.Employee.Find(employeeId);
+                var deletedEmployee = _context.Employee.Find(id);
+                if (deletedEmployee == null)
+                {
+                    return BadRequest("Employee not found");
+                }
                 _context.Remove(deletedEmployee);
                 _context.SaveChanges();
-                return Ok();
+                return Ok("Employee deleted");
             }
             catch (Exception ex)
             {
