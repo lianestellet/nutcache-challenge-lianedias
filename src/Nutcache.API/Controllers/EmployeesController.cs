@@ -50,16 +50,27 @@ namespace Nutcache.API.Controllers
             }
         }
 
-        [HttpPut]
-        public ActionResult Update(EmployeeVm employeeVm)
+        [HttpPut("{id}")]
+        public ActionResult Update(int id, [FromBody] EmployeeVm employeeVm)
         {
             try
             {
-                var updatedEmployee = _context.Employee.Find(employeeVm.Id);
-                updatedEmployee = employeeVm.ToModel();
-                updatedEmployee.Id = employeeVm.Id; // TODO Adjust
+                var updatingEmployee = _context.Employee.Find(id);
+                if (updatingEmployee == null)
+                {
+                    return BadRequest("Employee not found");
+                }
+
+                updatingEmployee.Name = employeeVm.Name;
+                updatingEmployee.BirthDate = employeeVm.BirthDate;
+                updatingEmployee.StartDate = employeeVm.StartDate;
+                updatingEmployee.Gender = employeeVm.Gender;
+                updatingEmployee.Email = employeeVm.Email;
+                updatingEmployee.CPF = employeeVm.CPF;
+                updatingEmployee.Team = employeeVm.Team;
+
                 _context.SaveChanges();
-                return Ok(updatedEmployee);
+                return Ok(updatingEmployee);
             }
             catch (Exception ex)
             {

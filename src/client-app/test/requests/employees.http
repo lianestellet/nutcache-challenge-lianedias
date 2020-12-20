@@ -12,10 +12,25 @@ content-type: application/json
 
 {
     "Name": "Ned Stark",
-    "BirthDate": "",
+    "BirthDate": "1954-06-08",
     "Gender": "Male",
     "Email": "ned.stark@gmail.com",
     "CPF": "12608475495",
-    "StartDate": "",
+    "StartDate": "2021-01-05",
     "Team": "Backend"
+}
+
+### 
+PUT {{host}}/employees/1 HTTP/1.1
+Accept: application/json
+content-type: application/json
+
+{
+    "Name": "Ned Stark",
+    "BirthDate": "1954-06-08",
+    "Gender": "Male",
+    "Email": "ned.stark@gmail.com",
+    "CPF": "12608475495",
+    "StartDate": "2021-01-05",
+    "Team": "Frontend"
 }
