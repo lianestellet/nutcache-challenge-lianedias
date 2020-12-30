@@ -21,7 +21,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/repository',
-    '@/plugins/alerts'
+    '@/plugins/alerts',
+    '@/plugins/mirage'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

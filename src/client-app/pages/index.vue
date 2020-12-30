@@ -40,16 +40,9 @@
         <el-button
           size="mini"
           @click="handleOpenEdit(scope.row)">Edit</el-button>
-          <el-popconfirm title="Are you sure to remove employee?" 
-            cancel-button-text="No"
-            cancel-button-type="primary"
-            confirm-button-text="Yes"
-            confirm-button-type="danger"
-            >
             <el-button slot="reference" size="mini"
           type="danger"
           @click="handleDelete(scope.row)">Remove</el-button>
-          </el-popconfirm>
       </template>
     </el-table-column>
     </el-table>
@@ -65,6 +58,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import { MessageBox } from "element-ui";
 import CreateEmployeeDialog from '@/components/employee/CreateEmployeeDialog';
 
 export default {
@@ -108,9 +102,23 @@ export default {
     },
 
     handleDelete(employee) {
-      this.deleteEmployee(employee.id)
-        .then(() => this.showSuccess('Employee removed!'))
-        .catch(this.showException)
+
+      MessageBox.confirm(
+        `Do you wish to remove the employee?`,
+        "Confirmation",
+        {
+          confirmButtonText: "Yes",
+          cancelButtonText: "No",
+          type: "warning",
+        }).then(action => {
+          if (action === 'confirm') {
+            this.deleteEmployee(employee.id)
+              .then(() => this.showSuccess('Employee removed!'))
+              .catch(this.showException)
+          }
+        }).catch(() => {})
+
+
     }
   },
   mounted () {

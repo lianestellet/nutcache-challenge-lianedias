@@ -2,7 +2,7 @@
   <el-dialog
     title="Register Employee"
     :visible.sync="isCreateDialogVisible"
-    width="30%"
+    width="50%"
     :before-close="handleConfirmClose">
     <el-form ref="form" :model="employee" label-width="80px">
       <el-row type="flex" justify="start" :gutter="20">
@@ -196,5 +196,10 @@ import { mapActions } from 'vuex';
 <style>
 .el-form-item .el-form-item__content {
   display: flex;
+}
+
+.el-dialog {
+  min-width: 500px;
+  max-width: 800px;
 }
 </style>
